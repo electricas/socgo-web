@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useAuth } from "./../auth";
 import Container from "./../components/Container";
 import {
@@ -13,13 +14,18 @@ import {
   useColorMode,
   Center,
   useToast,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import Header from "./../components/Header";
 import { motion } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
 import { GitHub, Download, Book } from "react-feather";
 
-export default function Home() {
+export default function Home(props: any) {
   const { colorMode, toggleColorMode } = useColorMode();
+  const router = useRouter();
+  const { t } = useTranslation("home");
+  const { locale, locales, defaultLocale } = router;
   const toast = useToast();
   const easing = [0.6, -0.05, 0.01, 0.99];
   const fadeInUp = {
@@ -57,21 +63,19 @@ export default function Home() {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Box maxW={400}>
+                  <Box maxW={500}>
                     <motion.div variants={fadeInUp}>
-                      <Heading mb={4}>Hey!</Heading>
+                      <Heading mb={4}>{t("landing-title")}</Heading>
                     </motion.div>
                     <motion.div variants={fadeInUp}>
-                      <Text fontSize="xl">
-                        SocGo! is a social travelling project that helps you
-                        make new friends in a spontaneous way.
-                      </Text>
+                      <Text fontSize="xl">{t("landing-subtitle")}</Text>
                     </motion.div>
                     <Stack isInline>
                       <motion.div variants={fadeInUp}>
                         <Button
                           size="md"
-                          colorScheme="blue"
+                          colorScheme="brand"
+                          color="white"
                           mt="24px"
                           onClick={() => {
                             toast({
@@ -84,12 +88,12 @@ export default function Home() {
                             });
                           }}
                         >
-                          Download
+                          {t("landing-download-btn")}
                         </Button>
                       </motion.div>
                       <motion.div variants={fadeInUp}>
                         <Button size="md" mt="24px" leftIcon={<Book />}>
-                          Docs
+                          {t("landing-docs-btn")}
                         </Button>
                       </motion.div>
                       <motion.div variants={fadeInUp}>

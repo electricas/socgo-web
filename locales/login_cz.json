@@ -1,0 +1,8 @@
+{
+    "login-admin-alert": "Přihlašujete se do Administrátorského rozhraní. Pokud nemáte Administrátorský účet, opusťte tuto stránku.",
+    "login-email-placeholder": "Emailová adresa",
+    "login-password-placeholder": "Heslo",
+    "login-forgot-password-btn": "Zapomněli jste heslo?",
+    "login-signin-btn": "Přihlásit",
+    "login-signin-google-btn": "Přihlásit přes Google"
+}
