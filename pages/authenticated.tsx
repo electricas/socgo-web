@@ -6,9 +6,11 @@ import firebase from "firebase/app";
 import { Box, Flex, Text, Heading, Button } from "@chakra-ui/react";
 import Header from "../components/Header";
 import Container from "../components/Container";
+import { useRouter } from "next/router";
 
 function Authenticated({ session }: any) {
   firebaseClient();
+  const router = useRouter();
   if (session) {
     return (
       <Container>
@@ -27,7 +29,7 @@ function Authenticated({ session }: any) {
               colorScheme="red"
               onClick={async () => {
                 await firebase.auth().signOut();
-                window.location.href = "/";
+                router.push("/");
               }}
             >
               Sign out

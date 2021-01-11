@@ -5,7 +5,7 @@ export const verifyIdToken = (token: any) => {
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://socgo-d05b5.firebaseio.com",
+      databaseURL: process.env.databaseURL,
     });
   }
 
