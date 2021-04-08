@@ -1,0 +1,8 @@
+{
+    "login-admin-alert": "관리 패널에 로그인하는 중입니다. 관리자 계정이 없는 경우 이 페이지를 나가십시오.",
+    "login-email-placeholder": "이메일 주소",
+    "login-password-placeholder": "암호",
+    "login-forgot-password-btn": "암호를 잊으셨습니까?",
+    "login-signin-btn": "서명하고 들어오다",
+    "login-signin-google-btn": "Google로 로그인"
+}

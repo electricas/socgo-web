@@ -17,7 +17,15 @@ class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
             rel="stylesheet"
-          ></link>
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

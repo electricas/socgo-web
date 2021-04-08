@@ -36,4 +36,4 @@ next.config.js
 .vercel
 
 # secrets
-/secrets.json
+/util/secrets.json

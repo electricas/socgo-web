@@ -1,22 +1,23 @@
 import "../styles/globals.css";
 import { AppProps } from "next/app";
-import { AuthProvider } from "../auth";
+import { AuthProvider } from "../util/auth/auth";
 import { ChakraProvider, extendTheme, CSSReset } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import { AnimatePresence } from "framer-motion";
 import { Router } from "next/router";
 import NProgress from "nprogress";
 import "../styles/nprogress.css";
+import Header from "../components/Header";
 
 const theme = extendTheme({
   fonts: {
     body: "Inter, 'Noto Sans KR', sans-serif",
-    heading: "Inter, 'Noto Sans KR', sans-serif",
+    heading: "Poppins, Inter, 'Noto Sans KR', sans-serif",
   },
   styles: {
     global: (props: Record<string, any>) => ({
       body: {
-        bg: mode("#fff", "#16151A")(props),
+        bg: mode("#fff", "#121212")(props),
       },
       button: {
         bg: "rgba(255, 255, 255, 0.025)",
@@ -25,18 +26,18 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      100: "#5B1CEE",
-      200: "#5B1CEE",
-      300: "#5B1CEE",
-      400: "#5B1CEE",
-      500: "#5B1CEE",
-      600: "#5B1CEE",
-      700: "#5B1CEE",
-      800: "#5B1CEE",
-      900: "#5B1CEE",
+      100: "#E0153B",
+      200: "#E0153B",
+      300: "#E0153B",
+      400: "#E0153B",
+      500: "#E0153B",
+      600: "#E0153B",
+      700: "rgba(224, 21, 59, 0.2)",
+      800: "#E0153B",
+      900: "#ed5959",
     },
     gray: {
-      700: "#16151A",
+      700: "#222020",
     },
     telegram: {
       100: "#242529",
@@ -44,7 +45,7 @@ const theme = extendTheme({
     },
   },
   shadows: {
-    outline: "0 0 0 3px rgba(91, 28, 238, 0.6)",
+    outline: "0 0 0 3px rgba(224, 21, 59, 0.6)",
   },
 });
 

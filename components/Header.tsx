@@ -16,20 +16,15 @@ import {
   useColorModeValue,
   Stack,
   ButtonGroup,
+  MenuDivider,
 } from "@chakra-ui/react";
 import { Menu as MenuIcon, ChevronDown, Moon, Sun } from "react-feather";
 import Link from "next/link";
-import { useAuth } from "../auth";
+import { useAuth } from "../util/auth/auth";
 import firebase from "firebase/app";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 const { localeMap } = require("../i18n");
-
-const MenuItems = ({ children }: any) => (
-  <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
-    {children}
-  </Text>
-);
 
 const Header = (props: any) => {
   const router = useRouter();
@@ -47,8 +42,8 @@ const Header = (props: any) => {
       justify="space-between"
       wrap="wrap"
       px="2rem"
-      py="1.5rem"
-      bg={useColorModeValue("#fff", "#16151A")}
+      py="0.5rem"
+      bg={useColorModeValue("#fff", "#121212")}
       borderBottom="1px solid"
       borderColor={useColorModeValue("#E6E6E6", "#242529")}
       style={{
@@ -66,7 +61,7 @@ const Header = (props: any) => {
       <Box width={5} />
 
       <Button
-        size="sm"
+        size="xs"
         display={{ base: "block", md: "none" }}
         variant="solid"
         onClick={handleToggle}
@@ -79,30 +74,21 @@ const Header = (props: any) => {
         mt={{ base: 4, md: 0 }}
       >
         <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDown />} mr={8}>
-            <img
-              src={
-                "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-                locale?.toUpperCase() +
-                ".svg"
-              }
-              width={30}
-            />
+          {/* ts bug in chakra-ui -- caused by as={<>} */}
+          <MenuButton as={Button} size="sm" rightIcon={<ChevronDown />} mr={4}>
+            <img src={`/flags/${locale}.svg`} width={24} />
           </MenuButton>
           <MenuList>
             {localeMap.map((loc: any) => {
               return (
                 <MenuItem
+                  key={loc.countryCode}
                   onClick={async () => {
                     router.push("", "", { locale: loc.countryCode });
                   }}
                   icon={
                     <img
-                      src={
-                        "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-                        loc.countryCode.toUpperCase() +
-                        ".svg"
-                      }
+                      src={"/flags/" + loc.countryCode + ".svg"}
                       width={30}
                     />
                   }
@@ -115,19 +101,20 @@ const Header = (props: any) => {
         </Menu>
         <IconButton
           aria-label="Dark mode switch"
-          mr={8}
+          mr={4}
+          size="sm"
           icon={
             colorMode === "light" ? (
-              <Moon color="#5B1CEE" />
+              <Moon color="#E0153B" />
             ) : (
-              <Sun color="#5B1CEE" />
+              <Sun color="#E0153B" />
             )
           }
           onClick={toggleColorMode}
         />
         {!user ? (
           <Link href="/login">
-            <Button colorScheme="brand" color="white" variant="solid">
+            <Button colorScheme="brand" size="sm" color="white" variant="solid">
               <a>{t("navbar-signin")}</a>
             </Button>
           </Link>
@@ -136,20 +123,21 @@ const Header = (props: any) => {
             <MenuButton
               as={Avatar}
               borderRadius="0.375rem"
-              height="2.5rem"
-              width="2.5rem"
+              height="2rem"
+              width="2rem"
               cursor="pointer"
-              src="https://cdn.discordapp.com/attachments/349611593094397952/746134276248043570/P1000825-edit-crop.jpg"
+              src={firebase.auth().currentUser?.photoURL}
             ></MenuButton>
             <MenuList>
-              <MenuItem>{user != null ? user.uid : "No user"}</MenuItem>
+              <MenuItem>{user != null ? user.displayName : "No user"}</MenuItem>
               <MenuItem
                 onClick={async () => {
-                  router.push("/authenticated");
+                  router.push("/dashboard");
                 }}
               >
-                {t("navbar-controlpanel")}
+                {t("navbar-dashboard")}
               </MenuItem>
+              <MenuDivider />
               <MenuItem
                 onClick={async () => {
                   await firebase.auth().signOut();

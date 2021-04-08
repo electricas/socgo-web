@@ -1,0 +1,8 @@
+{
+    "login-admin-alert": "You're logging into the admin panel. If you do not have an Administrator account, leave this page.",
+    "login-email-placeholder": "Email Address",
+    "login-password-placeholder": "Password",
+    "login-forgot-password-btn": "Forgot password?",
+    "login-signin-btn": "Sign in",
+    "login-signin-google-btn": "Continue with Google"
+}

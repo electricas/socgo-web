@@ -14,3 +14,33 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.dots {
+  z-index: 1;
+  position: absolute;
+  transform: translateX(-200px);
+}
+
+@media (min-width: 768px) {
+  .scroll-indicator:before {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: scroll;
+  }
+
+  
+
+  @keyframes scroll {
+    0% {
+      opacity: 1; }
+    100% {
+      opacity: 0;
+      transform: translateY(36px); }
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-indicator, .scroll-indicator:before {
+    display: none;
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "login-admin-alert": "Você está entrando no painel de administração. Se você não tiver uma conta de Administrador, saia desta página.",
+    "login-email-placeholder": "Endereço de e-mail",
+    "login-password-placeholder": "Senha",
+    "login-forgot-password-btn": "Esqueceu a senha?",
+    "login-signin-btn": "i still dont know what sign in is in ptbr",
+    "login-signin-google-btn": "Continuar com o Google"
+}
